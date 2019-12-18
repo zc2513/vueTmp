@@ -18,6 +18,12 @@ module.exports = {
    * @type {boolean} true | false
    * @description 是否需要标题导航
    */
-  tagsView: true
+  tagsView: true,
+
+  /**
+   * @type {boolean} true | false
+   * @description 是否只保持一个子菜单的展开
+   */
+  isOnce: true
 
 }

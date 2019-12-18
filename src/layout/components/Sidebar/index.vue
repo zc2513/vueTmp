@@ -7,7 +7,7 @@
         :collapse="isCollapse"
         :background-color="variables.menuBg"
         :text-color="variables.menuText"
-        :unique-opened="false"
+        :unique-opened="isOnce"
         :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         mode="vertical"
@@ -50,7 +50,10 @@ export default {
     },
     isCollapse() {
       return !this.sidebar.opened
-    }
+    },
+    isOnce() {
+      return this.$store.state.settings.isOnce
+    },
   }
 }
 </script>
