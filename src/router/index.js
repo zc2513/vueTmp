@@ -71,22 +71,22 @@ export const constantRoutes = [
   informations,
 
   {
-    path: '/example',
+    path: '/demo',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    redirect: '/demo/table',
+    name: 'demo',
+    meta: { title: 'demo', icon: 'example' },
     children: [
       {
         path: 'table',
         name: 'Table',
-        component: () => import('@/views/table/index'),
+        component: () => import('@/views/demo/table/index'),
         meta: { title: 'Table', icon: 'table' }
       },
       {
         path: 'tree',
         name: 'Tree',
-        component: () => import('@/views/tree/index'),
+        component: () => import('@/views/demo/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
       }
     ]

@@ -2,7 +2,9 @@
   <div>
     众创公众平台后台管理系统
     <tinymce v-model="content" :height="300" /> 
-    <el-button @click="save">你好</el-button>
+    
+
+    <div style="margin-top:30px;" v-html="content"></div>
   </div>
 </template>
 

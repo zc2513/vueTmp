@@ -2,22 +2,27 @@
   <div :class="{fullscreen:fullscreen}" class="tinymce-container" :style="{width:containerWidth}">
     <textarea :id="tinymceId" class="tinymce-textarea" />
     <div class="editor-custom-btn-container">
-      <editorImage color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK" />
+      <editorImage color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK"  v-if="false"/>
     </div>
   </div>
 </template>
 
 <script>
 /**
- * docs:
- * https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html#tinymce
+ * 本地上传插件editorImage 暂时禁用
+ * id       String  组件的唯一标识符   默认帮助生成唯一的id
+ * value    String  富文本内容        只监视一次更改
+ * toolbar  Array   富文本工具栏      []
+ * menubar  String  富文本菜单条      文件编辑插入视图格式表
+ * height   Number  富文本高度        默认360
+ * width    Number/String 富文本宽度  auto
  */
 import editorImage from './components/EditorImage'
 import plugins from './plugins'
 import toolbar from './toolbar'
 import load from './dynamicLoadScript'
 
-// why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
+// 使用此cnd的原因 https://github.com/PanJiaChen/tinymce-all-in-one
 const tinymceCDN = 'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js'
 
 export default {
