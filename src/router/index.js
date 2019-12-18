@@ -15,7 +15,7 @@ import { performance, aptitude, weWork, dep, qy, user, informations } from './mo
  * alwaysShow:Boolean             默认false不显示,使用的是嵌套模式，也就是子菜单不为单项时显示跟菜单，为单项时显示子菜单
  *                                设置为true时始终显示根菜单
  * meta : {
-    roles: ['admin','editor']    控制页面角色(您可以设置多个角色)
+    roles: ['admin','editor']    控制页面角色权限(可以设置多个角色)
     title: 'title'               侧栏和面包屑展示的名称
     icon: 'svg-name'             图标
     breadcrumb: false            面包屑设置：(默认为true)，如果设置为false，则不再面包屑中显示

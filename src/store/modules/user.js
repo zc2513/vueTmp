@@ -17,6 +17,9 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
   }
 }
 
@@ -41,12 +44,17 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-
+        
         if (!data) {
           reject('获取用户信息失败，请重新登录')
         }
 
-        const { name, avatar } = data
+        const { name, avatar,roles } = data
+        if (!roles || roles.length <= 0) {
+          reject('未找到角色字段，角色字段必须是非空数组!')
+        }
+
+        commit('SET_ROLES', roles)
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         resolve(data)
