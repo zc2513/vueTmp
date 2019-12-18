@@ -16,6 +16,8 @@
  * menubar  String  富文本菜单条      文件编辑插入视图格式表
  * height   Number  富文本高度        默认360
  * width    Number/String 富文本宽度  auto
+ * docs:
+ * https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html#tinymce
  */
 import editorImage from './components/EditorImage'
 import plugins from './plugins'
