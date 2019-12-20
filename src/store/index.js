@@ -1,22 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+const path = require('path')
 import getters from './getters'
-import app from './modules/app'
-import settings from './modules/settings'
-import user from './modules/user'
-import tagsView from './modules/tagsView'
-import permission from './modules/permission'
 
 Vue.use(Vuex)
 
+const moduleFiles = require.context('./modules/', true, /\.js$/)
+const modules = moduleFiles.keys().reduce((modules, key) => {
+  modules[path.basename(key, '.js')] = moduleFiles(key).default
+  return modules
+}, {})
+
 const store = new Vuex.Store({
-  modules: {
-    app,
-    settings,
-    tagsView,
-    permission,
-    user
-  },
+  modules,
   getters
 })
 
