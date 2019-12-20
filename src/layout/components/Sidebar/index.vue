@@ -53,7 +53,7 @@ export default {
     },
     isOnce() {
       return this.$store.state.settings.isOnce
-    },
+    }
   }
 }
 </script>

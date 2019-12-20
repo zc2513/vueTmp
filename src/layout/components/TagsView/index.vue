@@ -45,7 +45,6 @@ export default {
       return this.$store.state.tagsView.visitedViews
     },
     routes() {
-      console.log(this.$store.state.permission.routes)
       return this.$store.state.permission.routes
     }
   },
@@ -160,11 +159,8 @@ export default {
       const latestView = visitedViews.slice(-1)[0]
       if (latestView) {
         this.$router.push(latestView.fullPath)
-      } else {
-        // now the default is to redirect to the home page if there is no tags-view,
-        // you can adjust it according to your needs.
-        if (view.name === 'Dashboard') {
-          // to reload home page
+      } else { // 如果没有设置affix时，关闭最后一个标签时的处理
+        if (view.name === 'Home') {
           this.$router.replace({ path: '/redirect' + view.fullPath })
         } else {
           this.$router.push('/')
@@ -216,8 +212,9 @@ export default {
       font-size: 12px;
       margin-left: 5px;
       margin-top: 4px;
+      border-top-left-radius: 20px 20px;
       &:first-of-type {
-        margin-left: 15px;
+        margin-left: 10px;
       }
       &:last-of-type {
         margin-right: 15px;
@@ -264,7 +261,7 @@ export default {
 </style>
 
 <style lang="scss">
-//reset element css of el-icon-close
+// el-icon-close 重置样式
 .tags-view-wrapper {
   .tags-view-item {
     .el-icon-close {

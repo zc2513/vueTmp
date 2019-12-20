@@ -5,7 +5,6 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
-// import weWork from './weWork'
 import { performance, aptitude, weWork, dep, qy, user, informations } from './module/index.js'
 
 /**
@@ -20,6 +19,8 @@ import { performance, aptitude, weWork, dep, qy, user, informations } from './mo
     icon: 'svg-name'             图标
     breadcrumb: false            面包屑设置：(默认为true)，如果设置为false，则不再面包屑中显示
     activeMenu: '/example/list'  如果设置路径，侧栏将突出显示您设置的路径
+    noCache: true                如果设置为true，页面将不会被缓存(默认false)
+    affix: true                   如果设置为true tags-view将固定标签，刷新后保存 (默认为false)
   }
  */
 
@@ -54,7 +55,7 @@ export const constantRoutes = [
       path: 'home',
       name: 'Home',
       component: () => import('@/views/home/index'),
-      meta: { title: '首页', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard', affix: true }
     }]
   },
   {
@@ -84,13 +85,25 @@ export const constantRoutes = [
         meta: { title: 'Table', icon: 'table' }
       },
       {
+        path: 'form',
+        name: 'Form',
+        component: () => import('@/views/demo/form/index'),
+        meta: { title: 'form', icon: 'eye', noCache: true }
+      },
+      {
+        path: 'rich',
+        name: 'rich',
+        component: () => import('@/views/demo/rich/index'),
+        meta: { title: '富文本', icon: 'nested' }
+      },
+      {
         path: 'tree',
         name: 'Tree',
         component: () => import('@/views/demo/tree/index'),
         meta: { title: 'Tree', icon: 'tree' }
       }
     ]
-  }, 
+  },
   {
     path: '/element-ui',
     component: Layout,
@@ -100,7 +113,7 @@ export const constantRoutes = [
         meta: { title: 'Element-UI', icon: 'link' }
       }
     ]
-  }, 
+  },
   { path: '*', redirect: '/404', hidden: true }
 ]
 

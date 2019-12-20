@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import 'normalize.css/normalize.css' // CSS resets 
+import 'normalize.css/normalize.css' // CSS resets
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -19,8 +19,8 @@ import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }
- 
-Vue.use(ElementUI, { locale }) 
+
+Vue.use(ElementUI, { locale })
 
 Vue.config.productionTip = false
 

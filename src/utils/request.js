@@ -10,31 +10,31 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(
-  config => { 
-    if (store.getters.token) { 
+  config => {
+    if (store.getters.token) {
       config.headers['X-Token'] = getToken()
     }
     return config
   },
-  error => { 
+  error => {
     console.log(error) // for debug
     return Promise.reject(error)
   }
 )
 
 // response interceptor
-service.interceptors.response.use( 
+service.interceptors.response.use(
   response => {
     const res = response.data
- 
+
     if (res.code !== 20000) {
       Message({
         message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
- 
-      if (res.code === 50008 || res.code === 50012 || res.code === 50014) { 
+
+      if (res.code === 50008 || res.code === 50012 || res.code === 50014) {
         MessageBox.confirm('您已经登出，您可以取消以停留在此页面，或再次登录', '确认注销', {
           confirmButtonText: 'Re-Login',
           cancelButtonText: 'Cancel',

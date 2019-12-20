@@ -36,7 +36,7 @@ export function filterAsyncRoutes(routes, roles) {
 }
 
 const state = {
-  routes: constantRoutes,//暂时未定异步路由 使用当前静态路由表
+  routes: constantRoutes, // 暂时未定异步路由 使用当前静态路由表
   // routes: [],
   addRoutes: []
 }

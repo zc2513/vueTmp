@@ -44,12 +44,12 @@ const actions = {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
         const { data } = response
-        
+
         if (!data) {
           reject('获取用户信息失败，请重新登录')
         }
 
-        const { name, avatar,roles } = data
+        const { name, avatar, roles } = data
         if (!roles || roles.length <= 0) {
           reject('未找到角色字段，角色字段必须是非空数组!')
         }
