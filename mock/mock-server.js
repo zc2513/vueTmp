@@ -28,11 +28,8 @@ function unregisterRoutes() {
 }
 
 module.exports = app => {
-  // es6 polyfill
   require('@babel/register')
 
-  // parse app.body
-  // https://expressjs.com/en/4x/api.html#req.body
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({
     extended: true
@@ -42,24 +39,21 @@ module.exports = app => {
   var mockRoutesLength = mockRoutes.mockRoutesLength
   var mockStartIndex = mockRoutes.mockStartIndex
 
-  // watch files, hot reload mock server
   chokidar.watch(mockDir, {
     ignored: /mock-server/,
     ignoreInitial: true
   }).on('all', (event, path) => {
     if (event === 'change' || event === 'add') {
       try {
-        // remove mock routes stack
         app._router.stack.splice(mockStartIndex, mockRoutesLength)
 
-        // clear routes cache
         unregisterRoutes()
 
         const mockRoutes = registerRoutes(app)
         mockRoutesLength = mockRoutes.mockRoutesLength
         mockStartIndex = mockRoutes.mockStartIndex
 
-        console.log(chalk.magentaBright(`\n > Mock Server hot reload success! changed  ${path}`))
+        console.log(chalk.magentaBright(`\n > 模拟服务器热重新加载成功!改变了  ${path}`))
       } catch (error) {
         console.log(chalk.redBright(error))
       }

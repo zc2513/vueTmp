@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
-    <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom:30px;" />
+    <h4>element-ui 带搜索 插件</h4>
+
+    <el-input v-model="filterText" placeholder="过滤名称" style="margin-bottom:30px;" />
 
     <el-tree
       ref="tree2"

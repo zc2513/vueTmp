@@ -5,8 +5,6 @@ export default {
     }
   },
   mounted() {
-    // 为了修复ios设备上的点击菜单会触发mouseleave错误
-    // https://github.com/PanJiaChen/vue-element-admin/issues/1135
     this.fixBugIniOS()
   },
   methods: {

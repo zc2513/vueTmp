@@ -13,7 +13,6 @@ export default {
   name: 'AppMain',
   computed: {
     cachedViews() {
-      console.log(this.$store.state.tagsView.cachedViews)
       return this.$store.state.tagsView.cachedViews
     },
     key() {
@@ -46,7 +45,7 @@ export default {
 </style>
 
 <style lang="scss">
-// fix css style bug in open el-dialog
+// 修复el-dialog fix样式
 .el-popup-parent--hidden {
   .fixed-header {
     padding-right: 15px;
