@@ -5,8 +5,7 @@
     :rules="rules"
     size="mini"
     label-width="100px"
-    class="demo-ruleForm"
-  >
+    class="demo-ruleForm">
     <el-form-item label="长度验证" prop="name">
       <el-input v-model="ruleForm.name" />
     </el-form-item>
