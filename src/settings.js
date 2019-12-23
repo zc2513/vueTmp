@@ -4,7 +4,7 @@ module.exports = {
 
   /**
    * @type {boolean} true | false
-   * @description 是否修复页眉
+   * @description 是否固定视图容器导航栏
    */
   fixedHeader: false,
 
