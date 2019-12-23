@@ -16,19 +16,19 @@
 <script>
 import logoImg from '@/assets/login/logo.jpg'
 export default {
-  name: 'SidebarLogo',
-  props: {
-    collapse: {
-      type: Boolean,
-      required: true
+    name: 'SidebarLogo',
+    props: {
+        collapse: {
+            type: Boolean,
+            required: true
+        }
+    },
+    data() {
+        return {
+            title: '众创工厂云平台',
+            logo: logoImg
+        }
     }
-  },
-  data() {
-    return {
-      title: '众创工厂云平台',
-      logo: logoImg
-    }
-  }
 }
 </script>
 

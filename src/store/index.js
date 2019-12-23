@@ -7,13 +7,13 @@ Vue.use(Vuex)
 
 const moduleFiles = require.context('./modules/', true, /\.js$/)
 const modules = moduleFiles.keys().reduce((modules, key) => {
-  modules[path.basename(key, '.js')] = moduleFiles(key).default
-  return modules
+    modules[path.basename(key, '.js')] = moduleFiles(key).default
+    return modules
 }, {})
 
 const store = new Vuex.Store({
-  modules,
-  getters
+    modules,
+    getters
 })
 
 export default store

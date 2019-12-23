@@ -31,103 +31,103 @@ import { performance, aptitude, weWork, dep, qy, user, informations } from './mo
  */
 
 export const constantRoutes = [
-  {
-    path: '/redirect',
-    component: Layout,
-    hidden: true,
-    children: [
-      {
-        path: '/redirect/:path*',
-        component: () => import('@/views/redirect/index')
-      }
-    ]
-  },
-  {
-    path: '/login',
-    component: () => import('@/views/login/index'),
-    hidden: true
-  },
-  {
-    path: '/',
-    component: Layout,
-    redirect: '/home',
-    children: [{
-      path: 'home',
-      name: 'Home',
-      component: () => import('@/views/home/index'),
-      meta: { title: '首页', icon: 'dashboard', affix: true }
-    }]
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/404'),
-    hidden: true
-  },
-  performance,
-  aptitude,
-  weWork,
-  dep,
-  qy,
-  user,
-  informations,
+    {
+        path: '/redirect',
+        component: Layout,
+        hidden: true,
+        children: [
+            {
+                path: '/redirect/:path*',
+                component: () => import('@/views/redirect/index')
+            }
+        ]
+    },
+    {
+        path: '/login',
+        component: () => import('@/views/login/index'),
+        hidden: true
+    },
+    {
+        path: '/',
+        component: Layout,
+        redirect: '/home',
+        children: [{
+            path: 'home',
+            name: 'Home',
+            component: () => import('@/views/home/index'),
+            meta: { title: '首页', icon: 'dashboard', affix: true }
+        }]
+    },
+    {
+        path: '/404',
+        component: () => import('@/views/404'),
+        hidden: true
+    },
+    performance,
+    aptitude,
+    weWork,
+    dep,
+    qy,
+    user,
+    informations,
 
-  {
-    path: '/demo',
-    component: Layout,
-    redirect: '/demo/table',
-    name: 'demo',
-    meta: { title: 'demo', icon: 'example' },
-    children: [
-      {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/demo/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/demo/form/index'),
-        meta: { title: 'form', icon: 'eye', noCache: true }
-      },
-      {
-        path: 'rich',
-        name: 'rich',
-        component: () => import('@/views/demo/rich/index'),
-        meta: { title: '富文本', icon: 'nested' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/demo/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-  {
-    path: '/element-ui',
-    component: Layout,
-    children: [
-      {
-        path: 'https://element.eleme.cn/#/zh-CN',
-        meta: { title: 'Element-UI', icon: 'link' }
-      }
-    ]
-  },
-  { path: '*', redirect: '/404', hidden: true }
+    {
+        path: '/demo',
+        component: Layout,
+        redirect: '/demo/table',
+        name: 'demo',
+        meta: { title: 'demo', icon: 'example' },
+        children: [
+            {
+                path: 'table',
+                name: 'Table',
+                component: () => import('@/views/demo/table/index'),
+                meta: { title: 'Table', icon: 'table' }
+            },
+            {
+                path: 'form',
+                name: 'Form',
+                component: () => import('@/views/demo/form/index'),
+                meta: { title: 'form', icon: 'eye', noCache: true }
+            },
+            {
+                path: 'rich',
+                name: 'rich',
+                component: () => import('@/views/demo/rich/index'),
+                meta: { title: '富文本', icon: 'nested' }
+            },
+            {
+                path: 'tree',
+                name: 'Tree',
+                component: () => import('@/views/demo/tree/index'),
+                meta: { title: 'Tree', icon: 'tree' }
+            }
+        ]
+    },
+    {
+        path: '/element-ui',
+        component: Layout,
+        children: [
+            {
+                path: 'https://element.eleme.cn/#/zh-CN',
+                meta: { title: 'Element-UI', icon: 'link' }
+            }
+        ]
+    },
+    { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({
-  // mode: 'history',  // 需要后端开启服务支持
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
+    // mode: 'history',  // 需要后端开启服务支持
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
 })
 
 const router = createRouter()
 
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // 重置路由
+    const newRouter = createRouter()
+    router.matcher = newRouter.matcher // 重置路由
 }
 
 export default router

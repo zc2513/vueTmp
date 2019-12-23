@@ -18,39 +18,39 @@ import tablePug from './tablePlugin'
 import page from './page'
 import datas from './data.js'
 export default {
-  components: {
-    tablePug,
-    page
-  },
-  data() {
-    return {
-      tableList: [],
-      lists: [],
-      type: true,
-      titles: [
-        { name: '订单编号', data: 'orderCode' },
-        { name: '订单状态', data: 'state' },
-        { name: '单位编号', data: 'cNumber' },
-        { name: '单位名称', data: 'cName' },
-        { name: '订单金额', data: 'total' },
-        { name: '支付方式', data: 'payMethod' },
-        { name: '登记时间', data: 'ctime' }]
-    }
-  },
-  created() {
-    this.getPageData(1)
-  },
-  methods: {
-    getVal(val) {
-      this.suninfo = val
-      console.log(val)
+    components: {
+        tablePug,
+        page
     },
-    getPageData(params) {
-      this.suninfo = params
-      this.lists = datas.slice((params - 1) * 8, params * 8)
-    }
+    data() {
+        return {
+            tableList: [],
+            lists: [],
+            type: true,
+            titles: [
+                { name: '订单编号', data: 'orderCode' },
+                { name: '订单状态', data: 'state' },
+                { name: '单位编号', data: 'cNumber' },
+                { name: '单位名称', data: 'cName' },
+                { name: '订单金额', data: 'total' },
+                { name: '支付方式', data: 'payMethod' },
+                { name: '登记时间', data: 'ctime' }]
+        }
+    },
+    created() {
+        this.getPageData(1)
+    },
+    methods: {
+        getVal(val) {
+            this.suninfo = val
+            console.log(val)
+        },
+        getPageData(params) {
+            this.suninfo = params
+            this.lists = datas.slice((params - 1) * 8, params * 8)
+        }
 
-  }
+    }
 }
 
 </script>

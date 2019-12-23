@@ -15,33 +15,33 @@
 import { Navbar, Sidebar, AppMain, TagsView } from './components'
 
 export default {
-  name: 'Layout',
-  components: {
-    Navbar,
-    Sidebar,
-    TagsView,
-    AppMain
-  },
-  computed: {
-    sidebar() {
-      return this.$store.state.app.sidebar
+    name: 'Layout',
+    components: {
+        Navbar,
+        Sidebar,
+        TagsView,
+        AppMain
     },
-    fixedHeader() {
-      return this.$store.state.settings.fixedHeader
+    computed: {
+        sidebar() {
+            return this.$store.state.app.sidebar
+        },
+        fixedHeader() {
+            return this.$store.state.settings.fixedHeader
+        },
+        classObj() {
+            return {
+                hideSidebar: !this.sidebar.opened,
+                openSidebar: this.sidebar.opened,
+                withoutAnimation: this.sidebar.withoutAnimation
+            }
+        }
     },
-    classObj() {
-      return {
-        hideSidebar: !this.sidebar.opened,
-        openSidebar: this.sidebar.opened,
-        withoutAnimation: this.sidebar.withoutAnimation
-      }
+    methods: {
+        handleClickOutside() {
+            this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
+        }
     }
-  },
-  methods: {
-    handleClickOutside() {
-      this.$store.dispatch('app/closeSideBar', { withoutAnimation: false })
-    }
-  }
 }
 </script>
 

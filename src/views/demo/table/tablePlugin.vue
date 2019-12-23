@@ -73,148 +73,148 @@
 */
 import datas from './data.js'
 export default {
-  props: {
-    type: {
-      type: Boolean,
-      default: true
-    },
-    isloading: {
-      type: Boolean,
-      default: false
-    },
-    border: {
-      type: Boolean,
-      default: true
-    },
-    align: {// left/center/right
-      type: String,
-      default: 'center'
-    },
-    msg: {
-      type: Object,
-      default: function() {
-        return {}
-      }
-    },
-    lists: {
-      type: Array,
-      default: function() {
-        return datas.slice(0, 8)
-      }
-    },
-    titles: {
-      type: Array,
-      default: function() {
-        return []
-      }
-    },
-    btns: {
-      type: Object,
-      default: function() {
-        return {// ----------------------------按钮项配置/不传则不展示
-          title: '操作',
-          width: '200', // 按钮项宽度
-          btnlist: [
-            {
-              icon: 'el-icon-zoom-in', // 使用字体图标为按钮
-              circle: true, // 控制按钮是否为圆形   false/true  默认false
-              type: 'primary', // 按钮模式
-              size: 'small', // 按钮大小medium / small / mini 默认为mini
-              style: {
-                color: '#fff', // 文字颜色
-                backgroundColor: '#e2e2e2', // 按钮背景色
-                borderColor: '#e2e2e2'
-              }
-            },
-            {
-              con: '详情',
-              type: 'success',
-              style: {
-                color: '#fff',
-                backgroundColor: '#f00',
-                borderColor: '#f00'
-              }
-            },
-            {
-              con: '共存',
-              icon: 'el-icon-check',
-              type: 'primary',
-              size: 'small',
-              style: {
-                color: '#00c',
-                backgroundColor: '#999',
-                borderColor: '#999'
-              }
+    props: {
+        type: {
+            type: Boolean,
+            default: true
+        },
+        isloading: {
+            type: Boolean,
+            default: false
+        },
+        border: {
+            type: Boolean,
+            default: true
+        },
+        align: {// left/center/right
+            type: String,
+            default: 'center'
+        },
+        msg: {
+            type: Object,
+            default: function() {
+                return {}
             }
-          ]
+        },
+        lists: {
+            type: Array,
+            default: function() {
+                return datas.slice(0, 8)
+            }
+        },
+        titles: {
+            type: Array,
+            default: function() {
+                return []
+            }
+        },
+        btns: {
+            type: Object,
+            default: function() {
+                return {// ----------------------------按钮项配置/不传则不展示
+                    title: '操作',
+                    width: '200', // 按钮项宽度
+                    btnlist: [
+                        {
+                            icon: 'el-icon-zoom-in', // 使用字体图标为按钮
+                            circle: true, // 控制按钮是否为圆形   false/true  默认false
+                            type: 'primary', // 按钮模式
+                            size: 'small', // 按钮大小medium / small / mini 默认为mini
+                            style: {
+                                color: '#fff', // 文字颜色
+                                backgroundColor: '#e2e2e2', // 按钮背景色
+                                borderColor: '#e2e2e2'
+                            }
+                        },
+                        {
+                            con: '详情',
+                            type: 'success',
+                            style: {
+                                color: '#fff',
+                                backgroundColor: '#f00',
+                                borderColor: '#f00'
+                            }
+                        },
+                        {
+                            con: '共存',
+                            icon: 'el-icon-check',
+                            type: 'primary',
+                            size: 'small',
+                            style: {
+                                color: '#00c',
+                                backgroundColor: '#999',
+                                borderColor: '#999'
+                            }
+                        }
+                    ]
+                }
+            }
         }
-      }
-    }
-  },
-  data() {
-    return {
-      list: [],
-      selectData: null // 点击状态数据记录
-    }
-  },
-  watch: {
-    msg: {
-      handler(val, oldVal) {
-        this.list = val
-      },
-      deep: true
-    }
-  },
-  methods: {
-    handleSelect(selection, row) { // 表单行数据获取
-      this.radio(row, 'select框')
     },
-    selectTableData(row) {
-      this.radio(row, '行')
+    data() {
+        return {
+            list: [],
+            selectData: null // 点击状态数据记录
+        }
     },
-    dblclick(row) {
-      this.radio(row, '双击')// 走 第三次点击 所以还是选中
+    watch: {
+        msg: {
+            handler(val, oldVal) {
+                this.list = val
+            },
+            deep: true
+        }
     },
-    operate(item, row) { // 按钮
-      this.$emit('sendVal', { type: item, data: row })
-    },
-    radio(row, type) { // 点击状态封装 处理当前点击事件并存储，在下次点击时清除其它 （行单选方法 存储行数据）
-      if (this.selectData && this.selectData === row) {
-        this.$refs.multipleTable.toggleRowSelection(row, false)
-        this.$refs.multipleTable.setCurrentRow()
-        this.selectData = null
-      } else {
-        this.selectData = row
-        this.$refs.multipleTable.clearSelection()// 清空多选框的所有选中状态
-        this.$refs.multipleTable.toggleRowSelection(row, true)// 选中当前点击项
-        this.$refs.multipleTable.setCurrentRow(row)// 选中当前行的背景状态
-      }
-      this.$emit('sendVal', { type: type, data: this.selectData })
-    },
-    selectAll(selection) { // 选中所有触发
-      if (selection.length === 0) { // 取消全选 清空行样式
-        this.$refs.multipleTable.setCurrentRow()
-        this.selectData = null
-      } else {
-        this.selectData = [...selection]
-      }
-      this.$emit('sendVal', { type: '全选', data: this.selectData })
-    },
-    disableType(v, c) { // ---禁用状态验证
-      return false
-    },
-    classType(v, ele) { // ---按钮样式
-      return ele
-    },
-    contentSave(row, val) {
-      if (row.status === '2' && val === '1') {
-        return '取消屏蔽'
-      } else {
-        return val
-      }
-    }
+    methods: {
+        handleSelect(selection, row) { // 表单行数据获取
+            this.radio(row, 'select框')
+        },
+        selectTableData(row) {
+            this.radio(row, '行')
+        },
+        dblclick(row) {
+            this.radio(row, '双击')// 走 第三次点击 所以还是选中
+        },
+        operate(item, row) { // 按钮
+            this.$emit('sendVal', { type: item, data: row })
+        },
+        radio(row, type) { // 点击状态封装 处理当前点击事件并存储，在下次点击时清除其它 （行单选方法 存储行数据）
+            if (this.selectData && this.selectData === row) {
+                this.$refs.multipleTable.toggleRowSelection(row, false)
+                this.$refs.multipleTable.setCurrentRow()
+                this.selectData = null
+            } else {
+                this.selectData = row
+                this.$refs.multipleTable.clearSelection()// 清空多选框的所有选中状态
+                this.$refs.multipleTable.toggleRowSelection(row, true)// 选中当前点击项
+                this.$refs.multipleTable.setCurrentRow(row)// 选中当前行的背景状态
+            }
+            this.$emit('sendVal', { type: type, data: this.selectData })
+        },
+        selectAll(selection) { // 选中所有触发
+            if (selection.length === 0) { // 取消全选 清空行样式
+                this.$refs.multipleTable.setCurrentRow()
+                this.selectData = null
+            } else {
+                this.selectData = [...selection]
+            }
+            this.$emit('sendVal', { type: '全选', data: this.selectData })
+        },
+        disableType(v, c) { // ---禁用状态验证
+            return false
+        },
+        classType(v, ele) { // ---按钮样式
+            return ele
+        },
+        contentSave(row, val) {
+            if (row.status === '2' && val === '1') {
+                return '取消屏蔽'
+            } else {
+                return val
+            }
+        }
 
-  }
+    }
 }
 </script>
 <style lang='scss' scoped>

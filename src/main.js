@@ -17,7 +17,7 @@ import '@/permission' // 权限
 
 import { mockXHR } from '../mock'
 if (process.env.NODE_ENV === 'production') {
-  mockXHR()
+    mockXHR()
 }
 
 Vue.use(ElementUI, { locale })
@@ -25,8 +25,8 @@ Vue.use(ElementUI, { locale })
 Vue.config.productionTip = false
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
 })

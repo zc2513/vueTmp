@@ -6,11 +6,11 @@
 
 <script>
 export default {
-  props: {
-    o: {
-      type: Boolean
+    props: {
+        o: {
+            type: Boolean
+        }
     }
-  }
 }
 </script>
 

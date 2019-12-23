@@ -14,16 +14,16 @@
 
 <script>
 export default {
-  data() {
-    return {
-      currentPage: 1
+    data() {
+        return {
+            currentPage: 1
+        }
+    },
+    methods: {
+        handleCurrentChange(val) {
+            this.$emit('pagesend', val)
+        }
     }
-  },
-  methods: {
-    handleCurrentChange(val) {
-      this.$emit('pagesend', val)
-    }
-  }
 }
 </script>
 
