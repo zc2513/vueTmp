@@ -9,7 +9,7 @@ import { performance, aptitude, weWork, dep, qy, user, informations } from './mo
 
 /**
  * hidden: true                   true不显示路由,默认为false
- * redirect: noRedirect           如果设置noRedirect将不会在面包屑中重定向
+ * redirect: noRedirect           如果设置noRedirect路由在面包屑导航中不可被点击
  * name:'router-name'             路由名称，在<keep-alive>中使用(必须设置)
  * alwaysShow:Boolean             默认false不显示,使用的是嵌套模式，也就是子菜单不为单项时显示跟菜单，为单项时显示子菜单
  *                                设置为true时始终显示根菜单
