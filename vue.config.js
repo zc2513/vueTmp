@@ -8,7 +8,7 @@ function resolve(dir) {
 
 const name = defaultSettings.title || '云平台' // 页面标题
 
-const port = process.env.port || process.env.npm_config_port || 9528
+const port = process.env.port || process.env.npm_config_port
 
 module.exports = {
     publicPath: '/',
