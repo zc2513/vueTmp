@@ -19,7 +19,7 @@ import '@/icons' // icon
 import '@/permission' // 权限
 
 import { mockXHR } from '../mock'
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
     mockXHR()
 }
 
